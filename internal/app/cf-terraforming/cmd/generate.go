@@ -1741,6 +1741,15 @@ func postProcess(f *hclwrite.File, resourceType string) {
 	switch resourceType {
 	case "cloudflare_stream_live_input", "cloudflare_stream":
 		addJSONEncode(f, "meta")
+	case "cloudflare_zone_setting":
+		for _, block := range f.Body().Blocks() {
+			attr := block.Body().GetAttribute("setting_id")
+			exprTokens := attr.Expr().BuildTokens(nil)
+			exprText := string(exprTokens.Bytes())
+			trimmed := strings.TrimSpace(exprText)
+			trimmed = strings.ReplaceAll(trimmed, "\"", "")
+			block.Body().SetAttributeValue("id", cty.StringVal(trimmed))
+		}
 	}
 }
 
