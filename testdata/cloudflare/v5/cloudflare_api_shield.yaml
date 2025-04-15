@@ -1,0 +1,40 @@
+---
+version: 1
+interactions:
+- request:
+    body: ""
+    form: {}
+    headers:
+      Accept:
+      - application/json
+      X-Stainless-Arch:
+      - arm64
+      X-Stainless-Lang:
+      - go
+      X-Stainless-Os:
+      - MacOS
+      X-Stainless-Package-Version:
+      - 4.2.0
+      X-Stainless-Retry-Count:
+      - "0"
+      X-Stainless-Runtime:
+      - go
+      X-Stainless-Runtime-Version:
+      - go1.24.0
+    url: https://api.cloudflare.com/client/v4/zones/0da42c8d2132a9ddaf714f9e7c920711/api_gateway/configuration
+    method: GET
+  response:
+    body: |
+      {"result":{"auth_id_characteristics":[{ "type": "cookie", "name": "test-cookie" }, { "type": "header", "name": "test-header" }]},"success":true,"errors":[],"messages":[]}
+    headers:
+      Cf-Auditlog-Id:
+      - 01961210-212a-73f3-8d79-e76e639ac04d
+      Connection:
+      - keep-alive
+      Content-Type:
+      - application/json
+      Vary:
+      - Accept-Encoding
+    status: 200 OK
+    code: 200
+    duration: ""
